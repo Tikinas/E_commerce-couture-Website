@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@600&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'spartan',sans-serif;
+}
+body{
+    background: #e4e9f7;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+.box{
+    background: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+                0 32px 64px -48px rgba(0,0,0,0.5);
+}
+.form-box{
+    width: 450px;
+    margin: 0px 10px;
+}
+.form-box header{
+    font-size: 25px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px  solid #e6e6e6;
+    margin-bottom: 10px;
+}
+.form-box form .field{
+    display: flex;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+.form-box form .field-input input{
+    height: 40px;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 16px;
+    padding: 0 10px ;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.btn{
+    height: 35px;
+    background: slateblue;
+    border-radius: 5px;
+    color: #fdfdfd;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all .3s;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+.btn:hover{
+    opacity: 0.82;
+}
+.submit{
+    width: 100%;
+}
+.link{
+    margin-bottom: 15px;
+}
+/****home***/
+
+.nav button{
+    margin: 10px;
+}
+#Header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    background: #d6f2f8;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+#Header a{
+    margin: 0;
+    padding: 0;
+}
+
+#navbar{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#navbar li{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+#navbar li a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color:rgba(0, 0, 0.06);
+    transition: 0.3 ease;
+}
+#navbar li a:hover,
+#navbar li a.active
+{
+    color: #ffc400 ;
+}
+#navbar li a.active::after,
+#navbar li a:hover::after
+{
+    content: "";
+    width: 30%;
+    height: 2px;
+    background:#1089ec ;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+#mobile{
+    display: none;
+    align-items: center;
+}
+#close{
+    display: none;
+}
+/****message style*/
+.message{
+    text-align: center;
+    background: #f9eded;
+    padding: 15px 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: red;
+}

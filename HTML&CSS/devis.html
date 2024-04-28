@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis personnalisé</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .summary {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .summary.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Devis personnalisé</h1>
+    <form id="quoteForm">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="type">Type de vêtement:</label>
+        <select id="type" name="type" required>
+            <option value="">Choisir...</option>
+            <option value="Chemise">Chemise</option>
+            <option value="Pantalon">Pantalon</option>
+            <option value="Robe">Robe</option>
+            <option value="Jupe">Jupe</option>
+            <!-- Ajoutez d'autres options au besoin -->
+        </select>
+
+        <label for="fabric">Tissu:</label>
+        <input type="text" id="fabric" name="fabric" required>
+
+        <label for="size">Taille:</label>
+        <input type="text" id="size" name="size" required>
+
+        <label for="services">Services:</label>
+        <select id="services" name="services" required>
+            <option value="">Choisir...</option>
+            <option value="ourlet">Ourlet (20€)</option>
+            <option value="retouches">Retouches (30€)</option>
+            <option value="ourlet+retouches">Ourlet + Retouches (50€)</option>
+        </select>
+
+        <input type="submit" value="Obtenir un devis">
+    </form>
+
+    <div class="summary" id="summary">
+        <h2>Récapitulatif du devis</h2>
+        <p id="summaryText"></p>
+        <p id="estimatedPrice"></p>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('quoteForm');
+    const summary = document.getElementById('summary');
+    const summaryText = document.getElementById('summaryText');
+    const estimatedPrice = document.getElementById('estimatedPrice');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const services = formData.get('services');
+
+        let price = 0;
+        switch (services) {
+            case 'ourlet':
+                price = 20;
+                break;
+            case 'retouches':
+                price = 30;
+                break;
+            case 'ourlet+retouches':
+                price = 50;
+                break;
+            default:
+                break;
+        }
+
+        const summaryData = {
+            description: formData.get('description'),
+            type: formData.get('type'),
+            fabric: formData.get('fabric'),
+            size: formData.get('size'),
+            services: services,
+            price: price
+        };
+
+        summaryText.textContent = `Description: ${summaryData.description}\nType: ${summaryData.type}\nTissu: ${summaryData.fabric}\nTaille: ${summaryData.size}\nServices: ${summaryData.services}`;
+        estimatedPrice.textContent = `Prix estimatif: ${summaryData.price}€`;
+
+        summary.classList.add('active');
+    });
+</script>
+
+</body>
+</html>
